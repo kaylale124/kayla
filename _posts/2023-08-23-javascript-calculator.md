@@ -4,9 +4,9 @@ comments: true
 hide: true
 layout: default
 description: A common way to become familiar with a language is to build a calculator.  This calculator shows off button with actions.
-categories: [C7.0]
-courses: { csse: {week: 2}, csp: {week: 2, categories: [2.C]}, csa: {week: 2} }
-type: ccc
+permalink: /techtalk/home_style
+courses: { csse: {week: 4} }
+type: hacks
 ---
 
 <!-- 
@@ -20,34 +20,64 @@ Hack 3: Implement 1 number operation (ie SQRT)
 HTML implementation of the calculator. 
 -->
 
+
 <!-- 
     Style and Action are aligned with HRML class definitions
     style.css contains majority of style definition (number, operation, clear, and equals)
     - The div calculator-container sets 4 elements to a row
     Background is credited to Vanta JS and is implemented at bottom of this page
 -->
+<h1 style="text-align: center">4 Function Calculator</h1>
 <style>
-  .calculator-output {
-    /*
-      calulator output
-      top bar shows the results of the calculator;
-      result to take up the entirety of the first row;
-      span defines 4 columns and 1 row
-    */
-    grid-column: span 4;
-    grid-row: span 1;
-  
-    border-radius: 10px;
-    padding: 0.25em;
-    font-size: 20px;
-    border: 5px solid black;
-  
-    display: flex;
-    align-items: center;
+  /* Calculator container styles */
+.calculator-container {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+/* Button styles */
+button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px 35px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+button:hover {
+  background-color: #e0e0e0;
+}
+/* Operator buttons */
+.calculator-operation button {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+/* Display styles */
+.calculator-output {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 24px;
+  font-family:courier new;
+  text-align: left;
+  grid-column: span 4;
+  grid-row: span 1;
+  color: #000000;
+}
+  .calculator-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-rows: repeat(5, 1fr); /* 5 rows*/
+    grid-gap: 5px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
   }
-  canvas {
-    filter: none;
-  }
+
+  
 </style>
 
 <!-- Add a container for the animation -->
@@ -56,25 +86,29 @@ HTML implementation of the calculator.
       <!--result-->
       <div class="calculator-output" id="output">0</div>
       <!--row 1-->
-      <div class="calculator-number">1</div>
-      <div class="calculator-number">2</div>
-      <div class="calculator-number">3</div>
-      <div class="calculator-operation">+</div>
+      <!-- Add Backspace button -->
+<div class="calculator-operation" style="grid-column: 2/ span 1; grid-row: 2/span 1"><button type="button" id="button-backspace">⌫</button></div>
+      <div class="calculator-clear" style="grid-column: 4/ span 1; grid-row: 2/span 1" ><button type="button">A/C</button></div>
       <!--row 2-->
-      <div class="calculator-number">4</div>
-      <div class="calculator-number">5</div>
-      <div class="calculator-number">6</div>
-      <div class="calculator-operation">-</div>
+      <div class="calculator-number" style="grid-column: 1/ span 1; grid-row: 3/span 1" id="button-1" data-value="1"><button type="button">1</button></div>
+      <div class="calculator-number" style="grid-column: 2/ span 1; grid-row: 3/span 1" id="button-2" data-value="2"><button type="button">2</button></div>
+      <div class="calculator-number" style="grid-column: 3/ span 1; grid-row: 3/span 1" id="button-3" data-value="3"><button type="button">3</button></div>
+      <div class="calculator-operation" style="grid-column: 4/ span 1; grid-row: 3/span 1"><button type="button">+</button></div>
       <!--row 3-->
-      <div class="calculator-number">7</div>
-      <div class="calculator-number">8</div>
-      <div class="calculator-number">9</div>
-      <div class="calculator-operation">*</div>
+      <div class="calculator-number" style="grid-column: 1/ span 1; grid-row: 4/span 1" id="button-4" data-value="4"><button type="button">4</button></div>
+      <div class="calculator-number" style="grid-column: 2/ span 1; grid-row: 4/span 1" id="button-5" data-value="5"><button type="button">5</button></div>
+      <div class="calculator-number" style="grid-column: 3/ span 1; grid-row: 4/span 1" id="button-6" data-value="6"><button type="button">6</button></div>
+      <div class="calculator-operation" style="grid-column: 4/ span 1; grid-row: 4/span 1"><button type="button">-</button></div>
       <!--row 4-->
-      <div class="calculator-clear">A/C</div>
-      <div class="calculator-number">0</div>
-      <div class="calculator-number">.</div>
-      <div class="calculator-equals">=</div>
+      <div class="calculator-number" style="grid-column: 1/ span 1; grid-row: 5/span 1" id="button-7" data-value="7"><button type="button">7</button></div>
+      <div class="calculator-number" style="grid-column: 2/ span 1; grid-row: 5/span 1" id="button-8" data-value="8"><button type="button">8</button></div>
+      <div class="calculator-number" style="grid-column: 3/ span 1; grid-row: 5/span 1" id="button-9" data-value="9"><button type="button">9</button></div>
+      <div class="calculator-operation" style="grid-column: 4/ span 1; grid-row: 5/span 1"><button type="button">*</button></div>
+      <!--row 5-->
+      <div class="calculator-number" style="grid-column: 2/ span 1; grid-row: 6/span 1" id="button-0" data-value="0"><button type="button">0</button></div>
+      <div class="calculator-number" style="grid-column: 1/ span 1; grid-row: 6/span 1" id ><button type="button">.</button></div>
+      <div class="calculator-equals" style="grid-column: 3/ span 1; grid-row: 6/span 1"><button type="button">=</button></div>
+      <div class="calculator-operation" style="grid-column: 4/ span 1; grid-row: 6/span 1"><button type="button">/</button></div>
   </div>
 </div>
 
@@ -139,6 +173,41 @@ function operation (choice) { // function to input operations into the calculato
     nextReady = true;
 }
 
+
+// Keyboard input listener
+document.addEventListener("keydown", function(event) {
+  const keyValue = event.key;
+  if (/[0-9]/.test(keyValue)) {
+    number(keyValue); // Handle number keys 0-9
+  } else if (keyValue === "+") {
+    operation("+");
+  } else if (keyValue === "-") {
+    operation("-");
+  } else if (keyValue === "*") {
+    operation("*");
+  } else if (keyValue === "/") {
+    operation("/");
+  } else if (keyValue === "=" || keyValue === "Enter") {
+    equal();
+  } else if (keyValue === "Escape") {
+    clearCalc();
+  } else if (keyValue === "."){
+    handleDecimal()
+  } else if (keyValue === "Backspace") {
+    backspace(); // Handle Backspace key
+  }
+});
+
+function handleDecimal() {
+  if (nextReady) {
+    output.innerHTML = "0.";
+    nextReady = false;
+  } else if (output.innerHTML.indexOf(".") === -1) {
+    output.innerHTML += ".";
+  }
+}
+
+
 // Calculator
 function calculate (first, second) { // function to calculate the result of the equation
     let result = 0;
@@ -188,16 +257,32 @@ function clearCalc () { // clears calculator
     output.innerHTML = "0";
     nextReady = true;
 }
+
+function backspace() {
+    const currentOutput = output.innerHTML;
+    if (currentOutput.length > 1) {
+        output.innerHTML = currentOutput.slice(0, -1); // Remove the last character
+    } else {
+        output.innerHTML = "0"; // If there's only one character, reset to 0
+    }
+}
+
+// Backspace button listener
+const backButton = document.getElementById("button-backspace");
+backButton.addEventListener("click", function () {
+    backspace();
+});
+
 </script>
 
 <!-- 
 Vanta animations just for fun, load JS onto the page
 -->
-<script src="{{site.baseurl}}/assets/js/three.r119.min.js"></script>
-<script src="{{site.baseurl}}/assets/js/vanta.halo.min.js"></script>
-<script src="{{site.baseurl}}/assets/js/vanta.birds.min.js"></script>
-<script src="{{site.baseurl}}/assets/js/vanta.net.min.js"></script>
-<script src="{{site.baseurl}}/assets/js/vanta.rings.min.js"></script>
+<script src="/teacher/assets/js/three.r119.min.js"></script>
+<script src="/teacher/assets/js/vanta.halo.min.js"></script>
+<script src="/teacher/assets/js/vanta.birds.min.js"></script>
+<script src="/teacher/assets/js/vanta.net.min.js"></script>
+<script src="/teacher/assets/js/vanta.rings.min.js"></script>
 
 <script>
 // setup vanta scripts as functions

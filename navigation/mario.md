@@ -213,6 +213,7 @@ hide: true
       event.preventDefault();
       mario.startPuffing();
     } else if (event.key === "p" && aKeyPressed) {
+      aKeyPressed = false; 
       event.preventDefault();
       mario.startPuffingL();
     }
@@ -256,3 +257,12 @@ hide: true
   });
 
 </script>
+
+# Commands
+- a: move left
+- d: move right
+- space: flip
+- w: cheer
+- r: rest
+- p: puff
+- shift: run
