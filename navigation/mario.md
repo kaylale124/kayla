@@ -115,6 +115,11 @@ hide: true
       this.animate(this.obj["Puff"], 0);
     }
 
+    startPuffingL() {
+      this.stopAnimate();
+      this.animate(this.obj["PuffL"], 0);
+    }
+
     startCheering() {
       this.stopAnimate();
       this.animate(this.obj["Cheer"], 0);
@@ -129,10 +134,18 @@ hide: true
       this.stopAnimate();
       this.animate(this.obj["Flip"], 0);
     }
-
+    startFlippingL() {
+      this.stopAnimate();
+      this.animate(this.obj["FlipL"], 0);
+    }
     startResting() {
       this.stopAnimate();
       this.animate(this.obj["Rest"], 0);
+    }
+
+    startRestingL() {
+      this.stopAnimate();
+      this.animate(this.obj["RestL"], 0);
     }
 
     stopAnimate() {
@@ -164,17 +177,44 @@ hide: true
         mario.startWalkingL();
     }
     } else if (event.key === "Shift" && dKeyPressed) {
-        event.preventDefault();
-        mario.startRunning();
+      dKeyPressed = false;
+      event.preventDefault();
+      mario.startRunning();
     } else if (event.key === "Shift" && aKeyPressed) {
-    event.preventDefault();
-    mario.startRunningL(); 
+      aKeyPressed = false;
+      event.preventDefault();
+      mario.startRunningL(); 
+    } else if (event.key === "w" && dKeyPressed) {
+      dKeyPressed = false;
+      event.preventDefault();
+      mario.startCheering();
+    } else if (event.key === "w" && aKeyPressed) {
+      aKeyPressed = false;
+      event.preventDefault();
+      mario.startCheeringL();
     } else if (event.key === " " && dKeyPressed) {
-        event.preventDefault();
-        mario.startCheering();
+      dKeyPressed = false;
+      event.preventDefault();
+      mario.startFlipping();
     } else if (event.key === " " && aKeyPressed) {
-        event.preventDefault();
-        mario.startCheeringL();
+      aKeyPressed = false;
+      event.preventDefault();
+      mario.startFlippingL();
+    } else if (event.key === "r" && dKeyPressed) {
+      dKeyPressed = false;
+      event.preventDefault();
+      mario.startResting();
+    } else if (event.key === "r" && aKeyPressed) {
+      aKeyPressed = false;
+      event.preventDefault();
+      mario.startRestingL();
+    } else if (event.key === "p" && dKeyPressed) {
+      dKeyPressed = false;
+      event.preventDefault();
+      mario.startPuffing();
+    } else if (event.key === "p" && aKeyPressed) {
+      event.preventDefault();
+      mario.startPuffingL();
     }
 });
 
