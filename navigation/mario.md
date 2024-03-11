@@ -3,6 +3,8 @@ layout: base
 title: Mario Game
 image: /images/mario_animation.png
 hide: true
+type: hacks
+courses: { csse: {week: 13} }
 ---
 <!-- Liquid:  statements -->
 
@@ -158,6 +160,10 @@ hide: true
   let dKeyPressed = false;
   let aKeyPressed = false;
   let shiftKeyPressed = false;
+  let pKeyPressed = false;
+  let rKeyPressed = false;
+  let wKeyPressed = false;
+  let spaceKeyPressed = false;
 
   ////////// event control /////////
 
@@ -166,8 +172,8 @@ hide: true
       event.preventDefault();
         if (!dKeyPressed) {
         aKeyPressed = false;
-          dKeyPressed = true;
-          mario.startWalking();
+        dKeyPressed = true;
+        mario.startWalking();
         } 
     } else if (event.key === "a") {
       event.preventDefault();
