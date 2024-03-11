@@ -5,7 +5,7 @@ layout: post
 title: Review Ticket - Week 10
 description: This will help us communicate results.
 type: tangibles
-courses: { csse: {week: 7} }
+courses: { csse: {week: 10} }
 ---
 
 ### Summary of Accomplishments
