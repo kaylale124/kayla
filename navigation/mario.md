@@ -159,11 +159,7 @@ courses: { csse: {week: 13} }
   
   let dKeyPressed = false;
   let aKeyPressed = false;
-  let shiftKeyPressed = false;
-  let pKeyPressed = false;
-  let rKeyPressed = false;
-  let wKeyPressed = false;
-  let spaceKeyPressed = false;
+
 
   ////////// event control /////////
 
@@ -222,6 +218,20 @@ courses: { csse: {week: 13} }
       aKeyPressed = false; 
       event.preventDefault();
       mario.startPuffingL();
+    }
+});
+
+window.addEventListener("keyup", (event) => {
+    if (event.key === "d") {
+        dKeyPressed = false;
+        mario.startResting();
+    }
+});
+
+window.addEventListener("keyup", (event) => {
+    if (event.key === "a") {
+        aKeyPressed = false;
+        mario.startRestingL();
     }
 });
 
