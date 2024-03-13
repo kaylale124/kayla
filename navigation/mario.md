@@ -202,14 +202,6 @@ courses: { csse: {week: 13} }
       aKeyPressed = false;
       event.preventDefault();
       mario.startFlippingL();
-    } else if (event.key === "r" && dKeyPressed) {
-      dKeyPressed = false;
-      event.preventDefault();
-      mario.startResting();
-    } else if (event.key === "r" && aKeyPressed) {
-      aKeyPressed = false;
-      event.preventDefault();
-      mario.startRestingL();
     } else if (event.key === "p" && dKeyPressed) {
       dKeyPressed = false;
       event.preventDefault();
@@ -275,10 +267,9 @@ window.addEventListener("keyup", (event) => {
 </script>
 
 # Commands
-- a: move left
-- d: move right
+- a: press and hold to move left
+- d: press and hold to move right
 - space: flip
 - w: cheer
-- r: rest
 - p: puff
 - shift: run
