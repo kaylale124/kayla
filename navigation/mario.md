@@ -94,22 +94,22 @@ courses: { csse: {week: 13} }
 
     startWalking() {
       this.stopAnimate();
-      this.animate(this.obj["Walk"], 3);
+      this.animate(this.obj["Walk"], 5);
     }
 
     startWalkingL() {
       this.stopAnimate();
-      this.animate(this.obj["WalkL"], -3);
+      this.animate(this.obj["WalkL"], -5);
     }
 
     startRunning() {
       this.stopAnimate();
-      this.animate(this.obj["Run1"], 6);
+      this.animate(this.obj["Run1"], 10);
     }
 
     startRunningL(){
         this.stopAnimate();
-        this.animate(this.obj["Run1L"], -6)
+        this.animate(this.obj["Run1L"], -10)
     }
 
     startPuffing() {
@@ -260,7 +260,7 @@ window.addEventListener("keyup", (event) => {
     // adjust sprite size for high pixel density devices
     const scale = window.devicePixelRatio;
     const sprite = document.querySelector(".sprite");
-    sprite.style.transform = `scale(${0.2 * scale})`;
+    sprite.style.transform = `scale(${0.6 * scale})`;
     mario.startResting();
   });
 
