@@ -200,9 +200,8 @@ const GameSetup = {
         loading: { src: "/images/platformer/backgrounds/greenscreen.png" },
         complete: { src: "/images/platformer/backgrounds/OneStar.png" },
         complete2: { src: "/images/platformer/backgrounds/TwoStar.png" },
-        congrats: {src:"/images/platformer/backgrounds/Congratulations!!!.png"},
         end: { src: "/images/platformer/backgrounds/Congratulations!!!.png" },
-        quidditch: { src: "/images/platformer/backgrounds/quidditch.jpg"}
+        quidditch: { src: "/images/platformer/backgrounds/quidditch2.jpg"}
       },
       players: {
         mario: {
@@ -248,7 +247,7 @@ const GameSetup = {
           runningRight: { row: 4, frames: 3, idleFrame: {column: 1, frames: 0} },
         },        
         harry: {
-          src: "/images/platformer/sprites/harryanimation.png", 
+          src: "/images/platformer/sprites/harryanimation2.png", 
           width: 32,
           height: 48,
           scaleSize: 80,
@@ -286,7 +285,7 @@ const GameSetup = {
           height: 180,
         },
         dementor: {
-          src: "/images/platformer/sprites/dementor.png",
+          src: "/images/platformer/sprites/dementor2.png",
           width: 400,
           height: 400,
           scaleSize: 80,
